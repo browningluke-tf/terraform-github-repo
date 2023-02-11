@@ -12,6 +12,8 @@ resource "github_repository" "repo" {
   visibility  = lookup(each.value, "public", false) ? "public" : "private"
   is_template = lookup(each.value, "is_template", false)
 
+  archived = lookup(each.value, "archived", false)
+
   # Has ...
   has_downloads = can(each.value.has.downloads) ? each.value.has.downloads : true
   has_issues    = can(each.value.has.issues) ? each.value.has.issues : true
